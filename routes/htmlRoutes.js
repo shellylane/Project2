@@ -40,6 +40,14 @@ module.exports = function (app) {
 
   });
 
+  // =======================================
+  // Load schedule page!
+  // =======================================
+  app.get("/schedule", function (req, res) {
+      res.render("schedule")
+  });
+
+
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
