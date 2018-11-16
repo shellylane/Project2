@@ -21,4 +21,10 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+// =====get users
+app.get("/api/user", function(req, res) {
+  db.User.findAll({}).then(function(dbUsers) {
+    res.json(dbUsers);
+  });
+});
 };
