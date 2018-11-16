@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">CONTACTS</h5>
+          <a href="/">← Back To Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table>
+          <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Role</th>
+          </thead>
+          <tbody>
+              {{#each users}}
+            <tr>
+              <td>{{firstName}}</td>
+              <td>{{lastName}}</td>
+              <td> {{email}}</td>
+              <td>{{phoneNumber}}</td>
+              <td>{{role}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
