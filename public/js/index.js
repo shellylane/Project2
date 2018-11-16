@@ -27,7 +27,41 @@ var API = {
       url: "api/examples/" + id,
       type: "DELETE"
     });
+  },
+  getUsers: function() {
+    return$.ajax({
+      url: "api/user",
+      type: "GET"
+    })
   }
+};
+
+var refreshUsers = function() {
+  API.getUsers().then(function(data) {
+    var $examples = data.map(function(example) {
+      var $a = $("<a>")
+        .text(example.text)
+        .attr("href", "/example/" + example.id);
+
+      var $li = $("<li>")
+        .attr({
+          class: "list-group-item",
+          "data-id": example.id
+        })
+        .append($a);
+
+      var $button = $("<button>")
+        .addClass("btn btn-danger float-right delete")
+        .text("ｘ");
+
+      $li.append($button);
+
+      return $li;
+    });
+
+    $exampleList.empty();
+    $exampleList.append($examples);
+  });
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
