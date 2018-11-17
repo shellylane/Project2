@@ -1,9 +1,36 @@
+ <script>
+    $(function() {
 
+        // page is now ready, initialize the calendar...
+      
+        $('#calendar').fullCalendar({
+  header: { center: 'month,listMonth' }, // buttons for switching between views
+
+  views: {
+    month: { // name of view
+      titleFormat: 'MMMM YYYY'
+      // other view-specific options here
+    },
+    listMonth: {
+
+    }
+  }
+});
+});
+
+    </script> 
 
 <div class="container">
     <div class="row">
         <div class="col">
             <h1>heyoooo, here is the schedule</h1>
         </div>
+        
     </div>
+    <div class="row">
+                        <div class="col"></div>
+                        <div id='calendar' class="col-8"></div>
+                        <div class="col"></div>
+                
+            </div>
 </div>
