@@ -1,7 +1,19 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-
+// require passport
+var passport = require("passport")
+// initalize pass port ===========
+// ===============================
+// For Passport
+ 
+// app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+ 
+// app.use(passport.initialize());
+ 
+// app.use(passport.session()); // persistent login sessions
+// ==========================================
+// ==========================================
 var db = require("./models");
 
 var app = express();

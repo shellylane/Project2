@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function (app) {
-  // Load index page
+  // Load index page, for our app this is also the register user page
   app.get("/", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("index", {
@@ -10,14 +10,14 @@ module.exports = function (app) {
       });
     });
   });
-
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
+  // ==============================
+  // load login page
+  // ==============================
+  app.get("/login", function (req, res) {
+    if (req.user) {
+      res.redirect("/members");
+    }
+    res.render("login")
   });
 
   // =======================================
@@ -26,25 +26,22 @@ module.exports = function (app) {
   app.get("/user", function (req, res) {
     db.User.findAll({}).then(function (dbUsers) {
       console.log("users loaded")
-      res.render("user", {users: dbUsers});
+      res.render("user", { users: dbUsers });
     });
-    // {
-    //   email: dbUsers.email,
-    //   password: dbUsers.password,
-    //   firstName: dbUsers.firstName,
-    //   lastName:  dbUsers.lastName,
-    //   phoneNumber: dbUsers.phoneNumber,
-    //   role: dbUsers.role
-    // }
-
-
   });
 
   // =======================================
   // Load schedule page!
   // =======================================
   app.get("/schedule", function (req, res) {
-      res.render("schedule")
+    res.render("schedule")
+  });
+
+  // =======================================
+  // load Forum Page!
+  // =======================================
+  app.get("/forum", function (req, res) {
+    res.render("schedule")
   });
 
 
