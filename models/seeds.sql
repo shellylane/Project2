@@ -4,7 +4,7 @@ CREATE TABLE users (
   password VARCHAR(45) NOT NULL,
   firstName VARCHAR(45)  NOT NULL,
   lastName VARCHAR(45)  NOT NULL,
-  phoneNumber INT(50) NOT NULL,
+  phoneNumber VARCHAR(50) NOT NULL,
   role VARCHAR(45) NOT NULL,
   PRIMARY KEY (id)
 );
