@@ -10,6 +10,15 @@ app.get("/api/user", function(req, res) {
   });
 });
 // 
+// GET route for getting the events
+app.get("/api/eventList", function(req, res) {
+  // findAll returns all entries for a table when used with no options
+  db.Event.findAll({}).then(function(dbEvent) {
+    
+    res.json(dbEvent);
+  });
+});
+
 app.post("/api/login", passport.authenticate("local"), function(req, res) {
   // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
   // So we're sending the user back the route to the user page because the redirect will happen on the front end
