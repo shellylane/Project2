@@ -1,4 +1,5 @@
 var db = require("../models");
+var passport = require("../config/passport");
 
 module.exports = function (app) {
   // Load index page, for our app this is also the register user page
@@ -52,8 +53,8 @@ module.exports = function (app) {
   // =======================================
   // load Forum Page!
   // =======================================
-  app.get("/forum", function (req, res) {
-    res.render("schedule")
+  app.get("/forum", passport.authenticate("local"), function (req, res) {
+    res.render("forum")
 });
 
 
