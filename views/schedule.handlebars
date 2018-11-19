@@ -1,36 +1,54 @@
- <script>
-    $(function() {
+<script>
+    $(function () {
 
         // page is now ready, initialize the calendar...
-      
+
         $('#calendar').fullCalendar({
-  header: { center: 'month,listMonth' }, // buttons for switching between views
+            editable: true,
+            header: { center: 'month,listMonth' },
 
-  views: {
-    month: { // name of view
-      titleFormat: 'MMMM YYYY'
-      // other view-specific options here
-    },
-    listMonth: {
+            // buttons for switching between views
 
-    }
-  }
-});
-});
+            views: {
+                month: { // name of view
+                    titleFormat: 'MMMM YYYY'
+                    // other view-specific options here
+                },
+                listMonth: {
 
-    </script> 
+                }
+            },
+           
+            
+            eventSources: [
+
+                // your event source
+                {
+                    url: '/api/eventList', // use the `url` property
+                    color: 'seagreen',    // an option!
+                    textColor: 'black'  // an option!
+                }
+
+                // any other sources...
+
+            ]
+
+        });
+    });
+
+</script>
 
 <div class="container">
     <div class="row">
         <div class="col">
             <h1>heyoooo, here is the schedule</h1>
         </div>
-        
+
     </div>
     <div class="row">
-                        <div class="col"></div>
-                        <div id='calendar' class="col-8"></div>
-                        <div class="col"></div>
-                
-            </div>
+        <div class="col"></div>
+        <div id='calendar' class="col-8"></div>
+        <div class="col"></div>
+
+    </div>
 </div>
