@@ -60,9 +60,18 @@ module.exports = function (app) {
       
       console.log("posts loaded")
       console.log(dbPosts);
-      res.render("blogpost", {posts: dbPosts});
       
+      
+      db.Comment.findAll({where: {id: req.params.id}}).then(function (dbComments) {
+        
+        console.log("comments loaded")
+        console.log(dbComments);
+        
+        // res.render("blogpost", {posts: dbComments});
+        res.render("blogpost", {posts: dbPosts, comments: dbComments});
+      });
     });
+    
 });
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

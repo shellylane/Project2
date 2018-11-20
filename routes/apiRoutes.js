@@ -58,4 +58,21 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+// get route for api/comment
+  app.get("/api/comment", function (req, res) {
+    db.Comment.findAll({include:[db.User]}).then(function (dbComment) {
+      res.json(dbComment);
+    });
+  });
+// create post route for comments
+ // create post api route 
+ app.post("/api/comment", function (req, res) {
+  console.log(req.user);
+  const data = {...req.body};
+  data.UserId = req.user.id;
+  db.Comment.create(data).then(dbComment => {
+    res.json(dbComment);
+  });
+});
+  
 };
