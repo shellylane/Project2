@@ -45,7 +45,7 @@ module.exports = function (app) {
   });
   // get for api/post route
   app.get("/api/post", function (req, res) {
-    db.Post.findAll({}).then(function (dbPosts) {
+    db.Post.findAll({include:[db.User]}).then(function (dbPosts) {
       res.json(dbPosts);
     });
   });
