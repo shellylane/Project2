@@ -20,14 +20,14 @@ module.exports = function (app) {
   // ==============================
   // load home page
   // ==============================
-  app.get("/home", function (req, res) {
+  app.get("/home", authRoute, function (req, res) {
     res.render("homecontent");
   });
 
   // =======================================
   // Load contact page 
   // =======================================
-  app.get("/user", function (req, res) {
+  app.get("/user", authRoute, function (req, res) {
     db.User.findAll({}).then(function (dbUsers) {
       console.log("users loaded")
       res.render("user", { users: dbUsers });
@@ -37,13 +37,13 @@ module.exports = function (app) {
   // =======================================
   // Load schedule page!
   // =======================================
-  app.get("/schedule", function (req, res) {
+  app.get("/schedule", authRoute, function (req, res) {
     res.render("schedule")
   });
   // =======================================
   // Load Add Event page!
   // =======================================
-  app.get("/addevent", function (req, res) {
+  app.get("/addevent", authRoute, function (req, res) {
     res.render("addevent")
 });
 
@@ -60,18 +60,28 @@ module.exports = function (app) {
   // =======================================
   // load specific blog Page!
   // =======================================
-  app.get("/forum/:id", function (req, res) {
+  app.get("/forum/:id", authRoute, function (req, res) {
 
     db.Post.findOne({ 
       where: { id: req.params.id },
-      include: [{model: db.Comment, include: [db.User]}, db.User]
+      include: [{model: db.Comment, order:['createdAt', 'asc'], include: [db.User]}, db.User]
     }).then(function (dbPosts) {
 
+      
       res.render("blogpost", { posts: dbPosts });
 
     });
-
+    
   });
+
+    // ================================================
+  // load logout which will redirect to the login page!
+  // ==================================================
+  app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/login');
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");

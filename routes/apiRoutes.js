@@ -80,7 +80,7 @@ module.exports = function (app) {
 
     db.Post.findOne({ 
       where: { id: req.params.id },
-      include: [{model: db.Comment, include: [db.User]}, db.User]
+      include: [{model: db.Comment, order:['createdAt', 'asc'], include: [db.User]}, db.User]
     }).then(function (dbPosts) {
 
       res.json(dbPosts);
