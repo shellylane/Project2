@@ -62,7 +62,10 @@ module.exports = function (app) {
   // =======================================
   app.get("/forum/:id", function (req, res) {
 
-    db.Post.findOne({ where: { id: req.params.id }, include: [db.Comment, db.User] }).then(function (dbPosts) {
+    db.Post.findOne({ 
+      where: { id: req.params.id },
+      include: [{model: db.Comment, include: [db.User]}, db.User]
+    }).then(function (dbPosts) {
 
       res.render("blogpost", { posts: dbPosts });
 

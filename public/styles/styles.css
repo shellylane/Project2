@@ -1,32 +1,29 @@
-/* .list-group-item {
-  line-height: 2.5;
-} */
-
 * {
   box-sizing: border-box;
 }
 
 body { 
+
+  /* background-image: url("../images/greenTexture.jpg"); */
   background-repeat: no-repeat; 
   background-size: cover;
-  background-color:seagreen;
-  /* background-color: darkslategray;  */
-
+  background-color: white; 
+  /* text-align: right; 
+  font-size: 2rem;
+  font-weight: 400; */
+  /* background-repeat: no-repeat; 
+  background-size: cover;
+  background-color:seagreen; */
 }
-
 
 .btn-reg {
   align-content: right; 
-  color: orange; 
+  color: #fb511b;
 }
 
 .btn-reg:hover {
-  background-color: orange; 
+  background-color:#fb511b;
   color: white; 
-}
-
-#master-container {
-  background-color: white; 
 }
 
 
@@ -38,38 +35,36 @@ body {
   justify-content: center; 
 }
 
-
 .topnav a {
-  
   color: #f2f2f2;
   padding-top: 15px;
   padding-right: 20px;
   padding-bottom: 15px;
   padding-left: 20px;
   text-decoration: none;
-  font-size: 17px;
-  /* position: sticky; */
+  font-size: 15px;
+  position: sticky;
   font-weight: bold; 
-  font-family: 'Titillium Web', sans-serif;
-  font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Cinzel', serif;
   text-align: center; 
- 
+  font-family: 'Cinzel', serif;
 }
-
+ 
 
 .topnav a:hover {
   background-color: #ddd;
-  background-color: orange; 
+  background-color:#fb511b;
   color: black;
 }
-
 
 .topnav a.active {
   background-color:white; 
   color: black; 
 }
 
+
+#master-container {
+  background-color: white; 
+}
 
 .nav ul {
   list-style: none;
@@ -80,47 +75,34 @@ body {
   display: inline-block;
 }
 
-
-#master-container {
-  /* background-color: red;  */
-}
-
 .welcome {
-  /* background-color: purple;  */
   text-align: center; 
   font-weight: bold; 
   font-size: 25px; 
   padding: 20px; 
-  /* float: right;  */
 }
 
 .content {
-  /* background-color: yellow;  */
-  /* float: left;  */
  margin: 20px; 
   text-align:justify; 
 }
 
 .sidebar {
-   /* background-color: blue;  */
    padding: 10px; 
    text-align:justify; 
 }
 
 .schedule-content {
-   /* background-color: hotpink;  */
   align-content: center; 
   text-align: justify; 
 }
 
 .contacts  {
-   /* background-color: turquoise;  */
   align-content: center; 
   text-align: justify; 
 }
 
 .forum  {
- /* background-color: limegreen; */
  align-content: center; 
  text-align: justify; 
 }
@@ -128,6 +110,35 @@ body {
 .footer {
 background-color: #333; 
 color: white; 
-text-align: center; 
-/* padding: 5px;  */
+/* color: #fb511b; */
+padding: 25px; 
+}
+
+.footer p {
+  margin-bottom: 0;
+  text-align: center; 
+}
+
+
+
+.footer-container {
+  text-align: center; 
+  color: #fb511b;
+  font-size: 45px; 
+  font-weight: 400; 
+  /* margin-right: 36.3px; */
+}
+
+.copyright {
+  font-size: 25px;
+  color: #fb511b;
+}
+
+.icons {
+  color: #fb511b;
+}
+
+.icons :hover {
+  color: purple; 
+  color: white;
 }
