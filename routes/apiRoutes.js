@@ -27,7 +27,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/user", function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     db.User.create({
       email: req.body.email,
       password: req.body.password,
@@ -45,34 +45,43 @@ module.exports = function (app) {
   });
   // get for api/post route
   app.get("/api/post", function (req, res) {
-    db.Post.findAll({include:[db.User]}).then(function (dbPosts) {
+    db.Post.findAll({ include: [db.User] }).then(function (dbPosts) {
       res.json(dbPosts);
     });
   });
   // create post api route 
   app.post("/api/post", function (req, res) {
-    console.log(req.user);
-    const data = {...req.body};
+    // console.log(req.user);
+    const data = { ...req.body };
     data.UserId = req.user.id;
     db.Post.create(data).then(dbPost => {
       res.json(dbPost);
     });
   });
-// get route for api/comment
+  // get route for api/comment
   app.get("/api/comment", function (req, res) {
-    db.Comment.findAll({include:[db.User]}).then(function (dbComment) {
+    db.Comment.findAll({ include: [db.User, db.Post] }).then(function (dbComment) {
       res.json(dbComment);
     });
   });
-// create post route for comments
- // create post api route 
- app.post("/api/comment", function (req, res) {
-  console.log(req.user);
-  const data = {...req.body};
-  data.UserId = req.user.id;
-  db.Comment.create(data).then(dbComment => {
-    res.json(dbComment);
+  // create post route for comments
+  // create post api route 
+  app.post("/api/comment", function (req, res) {
+    const data = { ...req.body };
+    data.UserId = req.user.id;
+    console.log(data);
+    db.Comment.create(data).then(dbComment => {
+      res.json(dbComment);
+    });
   });
-});
-  
+
+  app.get("/api/forum/:id", function (req, res) {
+
+    db.Post.findOne({ where: { id: req.params.id }, include: [db.Comment, db.User] }).then(function (dbPosts) {
+
+      res.json( dbPosts );
+
+    });
+  });
+
 };
