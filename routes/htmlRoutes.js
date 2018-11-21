@@ -60,11 +60,14 @@ module.exports = function (app) {
   // =======================================
   // load specific blog Page!
   // =======================================
-  app.get("/forum/:id", authRoute, function (req, res) {
+  app.get("/forum/:id", function (req, res) {
 
     db.Post.findOne({ 
       where: { id: req.params.id },
-      include: [{model: db.Comment, order:['createdAt', 'asc'], include: [db.User]}, db.User]
+      include: [{model: db.Comment, include: [db.User]}, db.User],
+      order: [
+        [db.Comment, 'createdAt', 'DESC']
+      ]
     }).then(function (dbPosts) {
 
       
