@@ -13,7 +13,7 @@
                 listMonth: {
                 }
             },
-             
+
             eventSources: [
                 // your event source
                 {
@@ -26,21 +26,22 @@
         });
     });
 </script>
+<link rel="stylesheet" type="text/css" href="\styles\styles.css">
+<!-- THE NAV BAR -->
+<div class="topnav text-center">
+    <a class="active col-xs-12" href="/home">HOME</a>
+    <a href="/schedule" class="col-xs-12">SCHEDULE</a>
+    <a href="/user" class="col-xs-12">CONTACTS</a>
+    <a href="/forum" class="col-xs-12">FORUM</a>
+    <a href="/logout" class="col-xs-12">logout</a>
+</div>
 
 <div class="container">
-    <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <a href="/home">← Back To Home</a>
-        </div>
-      </div>
-    </div>
-  </div>
+
     <div class="row">
         <div class="col">
-            <h1>Schedule</h1>
-            
+            <h1 class="text-center">Schedule</h1>
+            <button type="button" class="btn btn-success"><a href="/addevent">add event</a></button>
         </div>
 
     </div>
@@ -51,5 +52,23 @@
 
     </div>
 
-    
+
 </div>
+<footer class="footer">
+    <div class="footer-container col-12">
+        <div class="row copyright">
+            <div class="col">
+                <p>Copyright, Team X, 2018 ©</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="icons">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube-square"></i>
+                </div>
+            </div>
+        </div>
+</footer>
