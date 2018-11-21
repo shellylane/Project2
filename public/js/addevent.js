@@ -31,7 +31,10 @@ $(document).ready(function() {
   // This function grabs todos from the database and updates the view
   function getEvents() {
     $.get("/api/events", function(data) {
-      events = data;
+      data.forEach(function(e){
+        e.start = moment(e.start).format("MM/DD/YYYY HH:mm");
+        events.push(e);
+      });
       initializeRows();
     });
   }
@@ -60,7 +63,7 @@ $(document).ready(function() {
         "</li>"
       ].join("")
     );
-      console.log(event);
+      // console.log(event);
     $newEventRow.find("button.delete").data("id", event.id);
     $newEventRow.data("event", event);
     return $newEventRow;
