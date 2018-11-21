@@ -12,12 +12,13 @@ module.exports = function(sequelize, DataTypes) {
       // A Post can't be created without an Author due to the foreign key constraint
       Comment.belongsTo(models.Post, {
         foreignKey: {
-          allowNull: true
+          allowNull: false
         }
       });
+      
       Comment.belongsTo(models.User, {
         foreignKey: {
-          allowNull: true
+          allowNull: false
         }
       });
     };
