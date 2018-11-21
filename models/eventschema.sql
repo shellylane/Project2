@@ -7,9 +7,9 @@ CREATE TABLE events (
   PRIMARY KEY (id)
 );
 
-INSERT INTO events (title, start, end, location)
-VALUES ("Practice", "2018-11-28T12:00:00", "2018-11-28T14:00:00", "Pecos Park" );
+INSERT INTO events (title, start, location)
+VALUES ("Practice", "2018-11-28T12:00:00", "Pecos Park" );
 
-INSERT INTO events (title, start, end, location)
-VALUES ("Game", "2018-11-30T15:00:00", "2018-11-28T16:00:00", "Pecos Park" );
+INSERT INTO events (title, start, location)
+VALUES ("Game", "2018-11-30T15:00:00", "Pecos Park" );
 
