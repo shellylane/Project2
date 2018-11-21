@@ -80,52 +80,50 @@ module.exports = function (app) {
 
     db.Post.findOne({ where: { id: req.params.id }, include: [db.Comment, db.User] }).then(function (dbPosts) {
 
-      res.json( dbPosts );
+      res.json(dbPosts);
 
     });
   });
 
-
-});
-
-// GET route for getting all of the events
-app.get("/api/events", function(req, res) {
-  // findAll returns all entries for a table when used with no options
-  db.event.findAll({}).then(function(dbevent) {
-    // We have access to the events as an argument inside of the callback function
-    res.json(dbevent);
-  });
-});
-
-// POST route for saving an event
-app.post("/api/events", function(req, res) {
-  // create takes an argument of an object describing the item we want to
-  // insert into our table. In this case we just we pass in an object with a text
-  // and complete property
-  db.event.create({
-    title: req.body.title,
-    start: req.body.start,
-    location: req.body.location
-  }).then(function(dbevent) {
-    // We have access to the new event as an argument inside of the callback function
-    res.json(dbevent);
-  });
-});
-
-// DELETE route for deleting events. We can get the id of the event to be deleted from
-// req.params.id
-app.delete("/api/events/:id", function(req, res) {
-  // We just have to specify which event we want to destroy with "where"
-  db.event.destroy({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(dbevent) {
-    res.json(dbevent);
+  // GET route for getting all of the events
+  app.get("/api/events", function (req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.event.findAll({}).then(function (dbevent) {
+      // We have access to the events as an argument inside of the callback function
+      res.json(dbevent);
+    });
   });
 
-});
+  // POST route for saving an event
+  app.post("/api/events", function (req, res) {
+    // create takes an argument of an object describing the item we want to
+    // insert into our table. In this case we just we pass in an object with a text
+    // and complete property
+    db.event.create({
+      title: req.body.title,
+      start: req.body.start,
+      location: req.body.location
+    }).then(function (dbevent) {
+      // We have access to the new event as an argument inside of the callback function
+      res.json(dbevent);
+    });
+  });
 
-  
+  // DELETE route for deleting events. We can get the id of the event to be deleted from
+  // req.params.id
+  app.delete("/api/events/:id", function (req, res) {
+    // We just have to specify which event we want to destroy with "where"
+    db.event.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbevent) {
+      res.json(dbevent);
+    });
 
+  });
 };
+
+
+
+
