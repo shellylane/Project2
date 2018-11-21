@@ -1,39 +1,84 @@
 var db = require("../models");
 var passport = require("../config/passport");
 
-module.exports = function(app) {
-// =====json dat of all user===============
-// =======================================
-app.get("/api/user", function(req, res) {
-  db.User.findAll({}).then(function(dbUsers) {
-    res.json(dbUsers);
+module.exports = function (app) {
+  // =====json dat of all user===============
+  // =======================================
+  app.get("/api/user", function (req, res) {
+    db.User.findAll({}).then(function (dbUsers) {
+      res.json(dbUsers);
+    });
+  });
+<<<<<<< HEAD
+});
+=======
+  // 
+  // GET route for getting the events
+  app.get("/api/eventList", function (req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.Event.findAll({}).then(function (dbEvent) {
+
+      res.json(dbEvent);
+    });
+  });
+>>>>>>> 8d0eddf982526bbdc3b8735bcf870ba259382cd7
+
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
+    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+    // So we're sending the user back the route to the user page because the redirect will happen on the front end
+    // They won't get this or even be able to access this page if they aren't authed
+    res.json("/home");
+  });
+
+  app.post("/api/user", function (req, res) {
+    console.log(req.body);
+    db.User.create({
+      email: req.body.email,
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      role: req.body.role
+    }).then(function () {
+      res.redirect(307, "/api/login");
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+      // res.status(422).json(err.errors[0].message);
+    });
+  });
+  // get for api/post route
+  app.get("/api/post", function (req, res) {
+    db.Post.findAll({include:[db.User]}).then(function (dbPosts) {
+      res.json(dbPosts);
+    });
+  });
+  // create post api route 
+  app.post("/api/post", function (req, res) {
+    console.log(req.user);
+    const data = {...req.body};
+    data.UserId = req.user.id;
+    db.Post.create(data).then(dbPost => {
+      res.json(dbPost);
+    });
+  });
+// get route for api/comment
+  app.get("/api/comment", function (req, res) {
+    db.Comment.findAll({include:[db.User]}).then(function (dbComment) {
+      res.json(dbComment);
+    });
+  });
+// create post route for comments
+ // create post api route 
+ app.post("/api/comment", function (req, res) {
+  console.log(req.user);
+  const data = {...req.body};
+  data.UserId = req.user.id;
+  db.Comment.create(data).then(dbComment => {
+    res.json(dbComment);
   });
 });
-
-app.post("/api/login", passport.authenticate("local"), function(req, res) {
-  // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
-  // So we're sending the user back the route to the user page because the redirect will happen on the front end
-  // They won't get this or even be able to access this page if they aren't authed
-  res.json("/home");
-});
-
-app.post("/api/user", function(req, res) {
-  console.log(req.body);
-  db.User.create({
-    email: req.body.email,
-    password: req.body.password,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    phoneNumber: req.body.phoneNumber,
-    role: req.body.role
-  }).then(function() {
-    res.redirect(307, "/api/login");
-  }).catch(function(err) {
-    console.log(err);
-    res.json(err);
-    // res.status(422).json(err.errors[0].message);
-  });
-});
+<<<<<<< HEAD
 // GET route for getting all of the events
 app.get("/api/events", function(req, res) {
   // findAll returns all entries for a table when used with no options
@@ -71,4 +116,7 @@ app.delete("/api/events/:id", function(req, res) {
   });
 
 });
+=======
+  
+>>>>>>> 8d0eddf982526bbdc3b8735bcf870ba259382cd7
 };

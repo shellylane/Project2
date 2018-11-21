@@ -1,4 +1,6 @@
 var db = require("../models");
+var passport = require("../config/passport");
+const authRoute = require("./utils/authRoute");
 
 module.exports = function (app) {
   // Load index page, for our app this is also the register user page
@@ -30,16 +32,6 @@ module.exports = function (app) {
       console.log("users loaded")
       res.render("user", {users: dbUsers});
     });
-    // {
-    //   email: dbUsers.email,
-    //   password: dbUsers.password,
-    //   firstName: dbUsers.firstName,
-    //   lastName:  dbUsers.lastName,
-    //   phoneNumber: dbUsers.phoneNumber,
-    //   role: dbUsers.role
-    // }
-
-
   });
 
   // =======================================
@@ -58,11 +50,35 @@ module.exports = function (app) {
   // =======================================
   // load Forum Page!
   // =======================================
-  app.get("/forum", function (req, res) {
-    res.render("schedule")
+  app.get("/forum", authRoute, function (req, res) {
+    db.Post.findAll({include:[db.User]}).then(function (dbPosts) {
+      console.log("posts loaded")
+      res.render("forum", {posts: dbPosts});
+    });
 });
 
+  // =======================================
+  // load specific blog Page!
+  // =======================================
+  app.get("/forum/:id", authRoute, function (req, res) {
 
+    db.Post.findAll({where: {id: req.params.id}}).then(function (dbPosts) {
+      
+      console.log("posts loaded")
+      console.log(dbPosts);
+      
+      
+      db.Comment.findAll({where: {id: req.params.id}}).then(function (dbComments) {
+        
+        console.log("comments loaded")
+        console.log(dbComments);
+        
+        // res.render("blogpost", {posts: dbComments});
+        res.render("blogpost", {posts: dbPosts, comments: dbComments});
+      });
+    });
+    
+});
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
