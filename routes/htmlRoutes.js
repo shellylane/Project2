@@ -15,14 +15,14 @@ module.exports = function (app) {
     if (req.user) {
       res.redirect("/homecontent");
     };
-});
+  });
 
   // ==============================
   // load home page
   // ==============================
   app.get("/home", function (req, res) {
     res.render("homecontent");
-});
+  });
 
   // =======================================
   // Load contact page 
@@ -30,7 +30,7 @@ module.exports = function (app) {
   app.get("/user", function (req, res) {
     db.User.findAll({}).then(function (dbUsers) {
       console.log("users loaded")
-      res.render("user", {users: dbUsers});
+      res.render("user", { users: dbUsers });
     });
   });
 
@@ -38,7 +38,7 @@ module.exports = function (app) {
   // Load schedule page!
   // =======================================
   app.get("/schedule", function (req, res) {
-      res.render("schedule")
+    res.render("schedule")
   });
   // =======================================
   // Load Add Event page!
@@ -51,34 +51,24 @@ module.exports = function (app) {
   // load Forum Page!
   // =======================================
   app.get("/forum", authRoute, function (req, res) {
-    db.Post.findAll({include:[db.User]}).then(function (dbPosts) {
+    db.Post.findAll({ include: [db.User] }).then(function (dbPosts) {
       console.log("posts loaded")
-      res.render("forum", {posts: dbPosts});
+      res.render("forum", { posts: dbPosts });
     });
-});
+  });
 
   // =======================================
   // load specific blog Page!
   // =======================================
-  app.get("/forum/:id", authRoute, function (req, res) {
+  app.get("/forum/:id", function (req, res) {
 
-    db.Post.findAll({where: {id: req.params.id}}).then(function (dbPosts) {
-      
-      console.log("posts loaded")
-      console.log(dbPosts);
-      
-      
-      db.Comment.findAll({where: {id: req.params.id}}).then(function (dbComments) {
-        
-        console.log("comments loaded")
-        console.log(dbComments);
-        
-        // res.render("blogpost", {posts: dbComments});
-        res.render("blogpost", {posts: dbPosts, comments: dbComments});
-      });
+    db.Post.findOne({ where: { id: req.params.id }, include: [db.Comment, db.User] }).then(function (dbPosts) {
+
+      res.render("blogpost", { posts: dbPosts });
+
     });
-    
-});
+
+  });
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");

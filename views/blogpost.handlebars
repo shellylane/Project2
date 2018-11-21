@@ -4,13 +4,13 @@
     crossorigin="anonymous"></script>
 
 
-{{#each posts}}
+
 
 <h5>
-    {{body}}
+    {{posts.body}}
 </h5>
 
-{{/each}}
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
     write a comment!
@@ -32,7 +32,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="commentSubmitButton" type="button" class="btn btn-primary">submit comment</button>
+                <button id="commentSubmitButton" data-id="{{posts.id}}" type="button" class="btn btn-primary">submit comment</button>
             </div>
         </div>
     </div>
@@ -46,11 +46,10 @@
                 <th>created time</th>
             </thead>
             <tbody>
-                {{#each comments}}
+                {{#each posts.Comments}}
                 <tr>
-                    <p>hey there!</p>
                     <td> {{commentBody}} </td>
-                    <td>{{User.firstName}}</td>
+                    <td>{{../posts.User.firstName}}</td>
                     <td> {{createdAt}}</td>
                 </tr>
                 {{/each}}

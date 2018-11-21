@@ -8,28 +8,27 @@ $(document).ready(function () {
 
 
     // When the signup button is clicked, we validate the email and password are not blank
-    commentSubmit.on("click", function (event) {
+    commentSubmit.on("click", function (event){
         console.log("click click boom")
         event.preventDefault();
         var commentData = {
             commentBody: commentInput.val().trim(),
+            PostId: $(this).data().id
         };
         console.log(commentData);
         if (!commentData.commentBody) {
             return;
         }
         // If we have all the required fields, run the signUpUser function
-        sendComment(commentData.commentBody);
+        sendComment(commentData);
         commentInput.val("");
-        location.reload();
     });
-
+    
     // Does a post to the signup route. If successful, we are redirected to the forum page page
     // Otherwise we log any errors
     function sendComment(commentBody) {
-        $.post("/api/comment", {
-            commentBody: commentBody
-        });
+        $.post("/api/comment", commentBody);
+        location.reload();
     }
 
     function handleLoginErr(err) {
