@@ -13,6 +13,14 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     });
+
+    Post.associate = function (models) {
+      // Associating Author with Posts
+      // When an Author is deleted, also delete any associated Posts
+      Post.hasMany(models.Comment, {
+        onDelete: "cascade"
+      });
+    };
   
     Post.associate = function(models) {
       // We're saying that a Post should belong to an Author
