@@ -1,4 +1,5 @@
 <script>
+<<<<<<< HEAD
     $(function () {
         // page is now ready, initialize the calendar...
         $('#calendar').fullCalendar({
@@ -24,7 +25,35 @@
                 // any other sources...
             ]
         });
+=======
+  $(function () {
+    // page is now ready, initialize the calendar...
+    $('#calendar').fullCalendar({
+      editable: true,
+      header: { center: 'month,listMonth' },
+      // buttons for switching between views
+      views: {
+        month: { // name of view
+          titleFormat: 'MMMM YYYY'
+          // other view-specific options here
+        },
+        listMonth: {
+        }
+      },
+
+      eventSources: [
+        // your event source
+        {
+          url: '/api/events', // use the `url` property
+          color: 'seagreen',    // an option!
+          textColor: 'black'  // an option!
+        }
+        // any other sources...
+      ],
+      timezone: "local"
+>>>>>>> b4163c4bfc69fe4f1dc825ef0014dff4154d884d
     });
+  });
 </script>
 <link rel="stylesheet" type="text/css" href="\styles\styles.css">
 <!-- THE NAV BAR -->
@@ -37,21 +66,40 @@
 </div>
 
 <div class="container">
+<<<<<<< HEAD
 
     <div class="row">
         <div class="col">
             <h1 class="text-center">Schedule</h1>
             <button type="button" class="btn btn-success"><a href="/addevent">add event</a></button>
         </div>
+=======
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <a href="/home">← Back To Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>Schedule</h1>
+>>>>>>> b4163c4bfc69fe4f1dc825ef0014dff4154d884d
 
     </div>
-    <div class="row">
-        <div class="col"></div>
-        <div id='calendar' class="col-8"></div>
-        <div class="col"></div>
 
-    </div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div id='calendar' class="col-8"></div>
+    <div class="col"></div>
 
+  </div>
+
+
+<<<<<<< HEAD
 
 </div>
 <footer class="footer">
@@ -72,3 +120,6 @@
             </div>
         </div>
 </footer>
+=======
+</div>
+>>>>>>> b4163c4bfc69fe4f1dc825ef0014dff4154d884d

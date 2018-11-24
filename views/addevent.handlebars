@@ -1,5 +1,6 @@
 <div class="container">
 
+<<<<<<< HEAD
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4">
@@ -7,41 +8,62 @@
                 <button type="button" class="btn btn-success"><a href="/schedule">back to calendar!</a></button>
             </div>
             <div class="col-4"></div>
+=======
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h1>Add Event</h1>
+>>>>>>> b4163c4bfc69fe4f1dc825ef0014dff4154d884d
         </div>
-
-
-        <div class="row">
-            
-                <ul class="list-group event-list">
-                    <li class="list-group-item new-item">
-                        <form class="new-event" id="add-event-form">
-                            
-                                <div class="row">
-                                    <div class="col-2">
-                                        <input class="new-item form-control" id="title" placeholder="Event" type="text" />
-                                    </div>
-                                    <div class="col-3">
-                                        <input class="new-item form-control" id="date"placeholder="" type="date" />
-                                    </div>
-                                    <div class="col-2">
-                                        <input class="new-item form-control" id="time"placeholder="" type="time" />
-                                    </div>
-                                    <div class="col-3">
-                                        <input class="new-item form-control" id="location" placeholder="Location" type="text" />
-                                    </div>
-
-                                    <div class="col-2">
-                                        <button type="submit" class="btn btn-success">Add Event</button>
-                                    </div>
-                                </div>
-                            
-                        </form>
-                    </li>
-                    <span class="event-container">
-                    </span>
-                </ul>
-            
-        </div>
+        <div class="col-4"></div>
     </div>
-    <!-- Custom Script -->
-    <script src="js/addevent.js" type="text/javascript"></script>
+
+
+    <div class="row justify-contents-center">
+
+        <ul class="list-group event-list">
+            <li class="list-group-item new-item">
+                <form class="new-event" id="add-event-form">
+
+                    <div class="row">
+                        <div class="col-2">
+                            <input class="new-item form-control" id="title" placeholder="Event" type="text" />
+                        </div>
+                        <div class="col-3">
+                            <input class="new-item form-control" id="date" placeholder="" type="date" />
+                        </div>
+                        <div class="col-2">
+                            <input class="new-item form-control" id="time" placeholder="" type="time" />
+                        </div>
+                        <div class="col-3">
+                            <input class="new-item form-control" id="location" placeholder="Location" type="text" />
+                        </div>
+
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-success">Add Event</button>
+                        </div>
+                    </div>
+
+                </form>
+            </li>
+
+        </ul>
+    </div>
+    <br>
+
+
+    <table class=table>
+        <thead scope="row thead-dark">
+            <th scope="col-3">Event</th>
+            <th scope="col-3">Date/Time</th>
+            <th scope="col-3">Location</th>
+            <th scope="col-3">Delete</th>
+        </thead>
+        <tbody class="event-container">
+
+        </tbody>
+    </table>
+
+</div>
+<!-- Custom Script -->
+<script src="js/addevent.js" type="text/javascript"></script>
