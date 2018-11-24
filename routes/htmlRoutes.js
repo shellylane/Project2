@@ -51,7 +51,7 @@ module.exports = function (app) {
   // load Forum Page!
   // =======================================
   app.get("/forum", authRoute, function (req, res) {
-    db.Post.findAll({ include: [db.User] }).then(function (dbPosts) {
+    db.Post.findAll({ include: [db.User], order: [['createdAt', 'DESC']]}).then(function (dbPosts) {
       console.log("posts loaded")
       res.render("forum", { posts: dbPosts });
     });
