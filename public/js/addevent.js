@@ -23,6 +23,7 @@ $(document).ready(function() {
     $eventContainer.empty();
     var rowsToAdd = [];
     for (var i = 0; i < events.length; i++) {
+     
       rowsToAdd.push(createEvent(events[i]));
     }
     $eventContainer.prepend(rowsToAdd);
@@ -31,10 +32,11 @@ $(document).ready(function() {
   // This function grabs todos from the database and updates the view
   function getEvents() {
     $.get("/api/events", function(data) {
-      data.forEach(function(e){
-        e.start = moment(e.start).format("MM/DD/YYYY HH:mm");
-        events.push(e);
-      });
+      //  data.forEach(function(e){
+      //   e.start = moment(e.start).format("MM/DD/YYYY HH:mm");
+      //   events.push(e);
+      // });
+      events = data;
       initializeRows();
     });
   }
@@ -51,16 +53,15 @@ $(document).ready(function() {
 //need to work from here down
   // This function constructs an event-item row
   function createEvent(event) {
+   event.start = moment(event.start).format("dddd, MMMM Do YYYY, h:mm a");
     var $newEventRow = $(
       [
-        "<li class='list-group-item event-item'>",
-        "<span>",
-        event.title,
-        event.start,
-        event.location,
-        "</span>",
-        "<button class='delete btn btn-danger'>x</button>",
-        "</li>"
+        "<tr scope - row class='event-item'>",
+       "<td scope = col>",event.title,"</td>",
+       "<td scope = col>",event.start,"</td>",
+       "<td scope = col>",event.location,"</td>",
+       "<td scope = col>","<button class='delete btn btn-danger'>x</button>","</td>",
+        "</tr>"
       ].join("")
     );
       // console.log(event);
