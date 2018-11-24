@@ -1,19 +1,21 @@
 <div class="container">
 
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
-                <h1>Add Event</h1>
-                <button type="button" class="btn btn-success"><a href="/schedule">back to calendar!</a></button>
-            </div>
-            <div class="col-4"></div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h1>Add Event</h1>
+            <a class="btn btn-primary" href="/schedule" role="button">Back to Calendar</a>
+
         </div>
         <div class="col-4"></div>
     </div>
+    <div class="col-4"></div>
+</div>
 
 
-    <div class="row justify-contents-center">
-
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 centered">
         <ul class="list-group event-list">
             <li class="list-group-item new-item">
                 <form class="new-event" id="add-event-form">
@@ -41,21 +43,25 @@
             </li>
 
         </ul>
+
     </div>
-    <br>
+    <div class="col-2"></div>
 
+</div>
+<br>
+<div container>
+<table class=table>
+    <thead scope="row thead-dark">
+        <th scope="col-3">Event</th>
+        <th scope="col-3">Date/Time</th>
+        <th scope="col-3">Location</th>
+        <th scope="col-3">Delete</th>
+    </thead>
+    <tbody class="event-container">
 
-    <table class=table>
-        <thead scope="row thead-dark">
-            <th scope="col-3">Event</th>
-            <th scope="col-3">Date/Time</th>
-            <th scope="col-3">Location</th>
-            <th scope="col-3">Delete</th>
-        </thead>
-        <tbody class="event-container">
-
-        </tbody>
-    </table>
+    </tbody>
+</table>
+</div>
 
 </div>
 <!-- Custom Script -->
