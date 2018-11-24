@@ -1,3 +1,34 @@
+
+.topnav {
+    background-color: #333;
+    background-color: #fb511b;
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center; 
+}
+.topnav a {
+    color: #f2f2f2;
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    text-decoration: none;
+    font-size: 15px;
+    position: sticky;
+    font-weight: bold; 
+    text-align: center; 
+    font-family: 'Cinzel', serif;
+}
+   
+.topnav a:hover {
+    background-color: #ddd;
+    background-color:#fb511b;
+    color: black;
+}
+.topnav a.active {
+    background-color:white; 
+    color: black; 
+}
 .contact-list {
     padding-bottom: 60px; 
     }
@@ -24,6 +55,39 @@
     background-color: white; 
     border-bottom-style: dashed;
     }
+
+    
+.footer {
+    background-color: #333; 
+    background-color: #fb511b;
+    color: white; 
+    padding: 25px; 
+ }
+ .footer p {
+     margin-bottom: 0;
+     text-align: center; 
+ }
+ .footer-container {
+     text-align: center; 
+     color: #fb511b;
+     font-size: 45px; 
+     font-weight: 400; 
+ }
+ .copyright {
+     font-size: 25px;
+     color: #fb511b;
+     color: #333; 
+     color: white; 
+ }
+ .icons {
+     color: #fb511b;
+     color: #333; 
+     color: white; 
+ }
+ .icons :hover {
+     color: white;
+     color: #333; 
+ }
     
     /*RESPONSIVE CSS BELOW*/
     
