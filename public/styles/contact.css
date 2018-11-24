@@ -1,0 +1,73 @@
+.contact-list {
+    padding-bottom: 60px; 
+    }
+    
+    .table-spot {
+        display: flex; 
+        justify-content: center; 
+    }
+    
+    
+    .table-head {
+    background-color:#fb511b;
+    color: white; 
+    font-size: 20px; 
+    border-style: groove;
+    }
+    
+    .table {
+        border-style: double;
+        font-size: 20px;
+    }
+    
+    .person {
+    background-color: white; 
+    border-bottom-style: dashed;
+    }
+    
+    /*RESPONSIVE CSS BELOW*/
+    
+    /* Large devices (desktops, 992px and up) */
+    @media screen and (max-width: 1200px) {
+        .table {
+            font-size: 18px;
+        }
+        .table-head
+        {
+            font-size: 18px; 
+        }
+        
+    }
+    
+    /* Medium devices (992px and up) */
+    @media (max-width: 992px) { 
+        .table {
+            font-size: 12px;
+        }
+        .table-head
+        {
+            font-size: 12px;
+        }
+    }
+    
+    /* Medium devices (tablets, 768px and up) */
+    
+    @media (max-width: 768px) { 
+        .table {
+            font-size: 8px; 
+        }
+        .table-head
+        {
+            font-size: 8px; 
+        }
+    }
+    
+    /* Small devices (landscape phones, 576px and up) */
+    @media (max-width: 576px) { 
+        .table {
+            font-size: 8px; 
+        }
+        .table-head  {
+            font-size: 8px; 
+        }
+    }
