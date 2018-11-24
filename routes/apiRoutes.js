@@ -79,11 +79,14 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/forum/:id", function(req, res) {
-    db.Post.findOne({
+
+  app.get("/api/forum/:id", function (req, res) {
+
+    db.Post.findOne({ 
       where: { id: req.params.id },
-      include: [db.Comment, db.User]
-    }).then(function(dbPosts) {
+      include: [{model: db.Comment, order:['createdAt', 'asc'], include: [db.User]}, db.User]
+    }).then(function (dbPosts) {
+
       res.json(dbPosts);
     });
   });
