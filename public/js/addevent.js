@@ -60,7 +60,7 @@ $(document).ready(function() {
        "<td scope = col>",event.title,"</td>",
        "<td scope = col>",event.start,"</td>",
        "<td scope = col>",event.location,"</td>",
-       "<td scope = col>","<button class='delete btn btn-danger'>x</button>","</td>",
+       "<td scope = col>","<button class='delete btn make-orange'>x</button>","</td>",
         "</tr>"
       ].join("")
     );
