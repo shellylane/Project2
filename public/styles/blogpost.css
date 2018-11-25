@@ -1,0 +1,49 @@
+.table-spot {
+    display: flex; 
+    justify-content: center; 
+}
+
+
+.table-head {
+background-color:#fb511b;
+color: white; 
+font-size: 20px; 
+border-style: groove;
+}
+
+.table {
+    border-style: double;
+    font-size: 20px;
+}
+
+.footer {
+    background-color: #333; 
+    background-color: #fb511b;
+    color: white; 
+    padding: 25px; 
+ }
+ .footer p {
+     margin-bottom: 0;
+     text-align: center; 
+ }
+ .footer-container {
+     text-align: center; 
+     color: #fb511b;
+     font-size: 45px; 
+     font-weight: 400; 
+ }
+ .copyright {
+     font-size: 25px;
+     color: #fb511b;
+     color: #333; 
+     color: white; 
+ }
+ .icons {
+     color: #fb511b;
+     color: #333; 
+     color: white; 
+ }
+ .icons :hover {
+     color: white;
+     color: #333; 
+ }
