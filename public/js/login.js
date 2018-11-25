@@ -33,6 +33,7 @@ $(document).ready(function() {
         // If there's an error, log the error
       }).catch(function(err) {
         console.log(err);
+        $("#incorrect-cred").text('incorrect credentials... please try again!')
       });
     }
   
