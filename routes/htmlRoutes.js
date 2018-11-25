@@ -43,7 +43,7 @@ module.exports = function (app) {
   // =======================================
   // Load Add Event page!
   // =======================================
-  app.get("/addevent", authRoute, function (req, res) {
+  app.get("/addevent", authRoute, isCoach("addevent"), function (req, res) {
     res.render("addevent")
 });
 
@@ -84,9 +84,26 @@ module.exports = function (app) {
     req.logout();
     res.redirect('/login');
   });
+  //Load notacoach page
+  app.get("/notacoach", authRoute, function (req, res) {
+    res.render("notacoach")
+  });
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
   });
+};
+
+//Check to see if user is a coach
+function isCoach(role){
+  return function(req, res, next){
+      if(req.user.role === "coach"){
+          next();
+      }else{
+        
+          res.redirect("/notacoach");
+      }
+  }
 };
