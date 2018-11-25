@@ -11,7 +11,8 @@
                     // other view-specific options here
                 },
                 listMonth: {
-                }
+                },
+                 
             },
 
             eventSources: [
@@ -22,12 +23,14 @@
                     textColor: 'black'  // an option!
                 }
                 // any other sources...
-            ]
+            ],
+             timezone: "local"
         });
     });
 
 </script>
 <link rel="stylesheet" type="text/css" href="\styles\styles.css">
+<link rel="stylesheet" type="text/css" href="\styles\schedule.css">
 <!-- THE NAV BAR -->
 <div class="topnav text-center">
     <a  href="/home">HOME</a>
@@ -40,10 +43,10 @@
 <div class="container">
 
     <div class="row">
-        <div class="col">
-            <h1 class="text-center">Schedule</h1>
+        <div class="col"></div>
+        <div class="col-6">
         </div>
-        <div class="col"> 
+        <div class="col button-row"> 
              <a class="btn btn-primary" href="/addevent" role="button">Add Event</a>
             
         </div>
@@ -53,7 +56,7 @@
   </div>
   <div class="row">
     <div class="col"></div>
-    <div id='calendar' class="col-8"></div>
+    <div id='calendar' class="col-7"></div>
     <div class="col"></div>
 
   </div>
