@@ -3,7 +3,6 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var session = require("express-session");
 const morgan = require("morgan");
-var mysql = require("mysql")
 // require passport
 var passport = require("passport");
 var db = require("./models");
